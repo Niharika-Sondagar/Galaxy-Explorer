@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uranus</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #101010;
+            color: #fff;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        header {
+            position: relative;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(81, 91, 2, 0.4);
+            overflow: hidden;
+            text-shadow: 2px 2px 4px black;
+            height: 400px;
+            padding: 0;
+            background-image: url('uranus.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 0.5em;
+            color: white;
+            position: relative;
+            z-index: 1;
+            padding: 1rem;
+        }
+
+        header p {
+            font-size: 1.5em;
+            color: white;
+            position: relative;
+            z-index: 1;
+            padding: 1rem;
+        }
+
+        /* Main Content Styles */
+        main {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #323738;
+            box-shadow: 0 0 20px #fbc531;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 2rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        /* Overview Section with Image/Text */
+        .overview-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-gap: 2rem;
+            align-items: start;
+        }
+
+        .overview-container video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px #fbc531;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .overview-container video:hover {
+            transform: scale(1.03);
+        }
+
+        /* Style for the two initial paragraphs */
+        .overview-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Put more than 2 paragraph after picture */
+        .afterimage {
+            grid-column: 1 / -1;
+        }
+
+        section h2 {
+            font-size: 2.5em;
+            color: #fbc531;
+            margin-bottom: 0.75em;
+            padding-bottom: 0.5em;
+            border-bottom: 2px solid #fbc531;
+        }
+
+        p {
+            margin-bottom: 1.2em;
+            color: #dfe6e9;
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 1.5em;
+            color: #dfe6e9;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        .uranus-fact {
+            background-color: #060606;
+            padding: 1.5rem;
+            border-left: 5px solid #e1b12c;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .uranus-fact p {
+            font-style: italic;
+            color: #fefefe;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #2d3436;
+            color: #fff;
+            text-align: center;
+            padding: 1.0rem 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            header {
+                height: 300px;
+            }
+
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            main {
+                max-width: 100%;
+                margin: 1rem auto;
+                padding: 1rem;
+                grid-template-columns: 1fr;
+            }
+
+            .overview-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                align-items: center;
+            }
+
+            .overview-container video {
+                margin: 0 auto 1rem;
+            }
+
+            .afterimage {
+                grid-column: 1 / -1;
+                text-align: left;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+            }
+            p {
+                font-size: 0.9em;
+            }
+
+            ul, ol {
+                font-size: 0.9em;
+            }
+            li {
+                margin-bottom: 0.3em;
+            }
+        }
+
+        /* For very small screens */
+        @media (max-width: 480px) {
+            header {
+                height: 200px;
+            }
+            header h1 {
+                font-size: 1.8em;
+                padding: 0.3rem;
+            }
+
+            header p {
+                font-size: 0.9em;
+                padding: 0.3rem;
+            }
+            .uranus-fact {
+                padding: 1rem;
+                font-size:0.8em;
+            }
+            p {
+                font-size: 0.8em;
+            }
+
+            ul, ol {
+                font-size: 0.8em;
+            }
+            section h2 {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+
+        <h1>Uranus:The Tilted Ice Giant of Our Solar System</h1>
+        <p>A Cold and Unique World</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Overview</h2>
+            <div class="overview-container">
+                <video autoplay loop muted>
+                    <source src="uranus.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="overview-text">
+                    <p>Uranus, the seventh planet from the Sun, is an ice giant known for its unique sideways rotation.  Its axis of rotation is tilted almost 98 degrees, making it appear to spin on its side.</p>
+                    <p>The planet has a bluish-green color due to the absorption of red light by methane in its atmosphere.  Uranus has a faint ring system and numerous moons.</p>
+                    <h3>An Ice Giant Composition: Atmosphere, Mantle, and Core</h3>
+            <p>Uranus is categorized as an ice giant, a planet composed primarily of icy materials such as water, methane, and ammonia, rather than the hydrogen and helium that dominate Jupiter and Saturn. Its atmosphere, while composed mainly of hydrogen and helium, is infused with methane, which absorbs red light and gives the planet its distinctive blue-green color. Beneath the atmosphere lies a mantle of icy materials, thought to be in a slushy or liquid state due to the immense pressure. At the planet's center lies a rocky core, likely composed of silicates and iron.</p>
+                </div>
+            </div>
+            
+
+            <h3 class = "afterimage">A Tilted World: Seasons Like No Other</h3>
+            <p class ="afterimage">Uranus's extreme axial tilt of nearly 98 degrees results in seasons unlike any other in our solar system. For nearly half of Uranus's 84-year orbit around the Sun, one pole faces the Sun directly, experiencing continuous sunlight, while the other pole is plunged into darkness. This bizarre seasonal cycle creates extreme temperature variations between the sunlit and shadowed hemispheres, leading to dramatic weather patterns and atmospheric dynamics. </p>
+
+            <h3 class = "afterimage">A Faint and Subtle Ring System and Family of Moons</h3>
+            <p class ="afterimage">Surrounding Uranus is a faint and subtle ring system, composed of dark and narrow rings made up of dust particles and larger rocky debris. These rings are not as prominent or spectacular as those of Saturn, but they add another layer of intrigue to the Uranus system. Orbiting Uranus are 27 known moons, each with its own unique characteristics. Miranda, a small moon with a fractured surface, exhibits features called "coronae," which are large, ovoid geological structures.</p>
+           
+        </section>
+
+        <section>
+            <h2>Key Characteristics</h2>
+            <ul>
+                <li><b>Orbital Period:</b> 30,687 Earth days (84 Earth years)</li>
+                <li><b>Diameter:</b> 50,724 km (about 4 times the size of Earth)</li>
+                <li><b>Mass:</b> 8.681 × 10^25 kg (about 14.5 times the mass of Earth)</li>
+                <li><b>Surface Gravity:</b> 0.886 g (Less than Earth's) - *Note: Gas/Ice giants don't have a true surface.*</li>
+                <li><b>Cloud Top Temperature:</b> Average -216°C (-357°F)</li>
+                <li><b>Atmosphere:</b> Primarily hydrogen and helium, with methane</li>
+                <li><b>Moons:</b> 27</li>
+
+            </ul>
+        </section>
+
+        <section>
+            <h2>Interesting Facts</h2>
+            <div class="uranus-fact">
+                <p>"Uranus is the coldest planet in the Solar System."</p>
+            </div>
+            <div class="uranus-fact">
+                <p>"A year on Uranus is equal to 84 Earth years."</p>
+            </div>
+            <div class="uranus-fact">
+                <p>"Uranus is the coldest planet in the Solar System."</p>
+            </div>
+        </section>
+        <section>
+            <h2>Exploration of Uranus</h2>
+            <p>Uranus has been visited by only one spacecraft to date: Voyager 2.</p>
+
+            <h3>Voyager 2</h3>
+            <p>Voyager 2 flew by Uranus in 1986, providing the first close-up images and data about the planet, its moons, and its rings.  No future missions to Uranus are currently planned, but it remains a target of scientific interest.</p>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Uranus Information. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

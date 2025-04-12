@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venus:</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #101010;
+            color: #fff;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        header {
+            position: relative;
+            text-align: center;
+            text-shadow: 2px 2px 4px black;
+            box-shadow: 0 2px 5px rgba(81, 91, 2, 0.4);
+            overflow: hidden;
+            height: 480px;
+            padding: 0;
+            background-image: url("venus.jpg"); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 0.5em;
+            color: white;
+            position: relative;
+            z-index: 1;
+            padding: 1rem;
+        }
+
+        header p {
+            font-size: 1.5em;
+            color: white;
+            position: relative;
+            z-index: 1;
+            padding: 1rem;
+        }
+
+        /* Main Content Styles */
+        main {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #323738;
+            box-shadow: 0 0 20px #fbc531;
+            border-radius: 12px;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 2rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        /* Overview Section with Image/Text */
+        .overview-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-gap: 2rem;
+            align-items: start;
+        }
+
+        .overview-container video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px #fbc531;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .overview-container video:hover {
+            transform: scale(1.03);
+        }
+
+        /* Style for the two initial paragraphs */
+        .overview-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Put more than 2 paragraph after picture */
+        .afterimage {
+            grid-column: 1 / -1;
+        }
+
+        section h2 {
+            font-size: 2.5em;
+            color: #fbc531;
+            margin-bottom: 0.75em;
+            padding-bottom: 0.5em;
+            border-bottom: 2px solid #fbc531;
+        }
+
+        p {
+            margin-bottom: 1.2em;
+            color: #dfe6e9;
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 1.5em;
+            color: #dfe6e9;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        .venus-fact {
+            background-color: #060606;
+            padding: 1.5rem;
+            border-left: 5px solid #e1b12c;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .venus-fact p {
+            font-style: italic;
+            color: #f9fbfb;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #2d3436;
+            color: #fff;
+            text-align: center;
+            padding: 1.0rem 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            header {
+                height: 300px;
+            }
+
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            main {
+                max-width: 100%;
+                margin: 1rem auto;
+                padding: 1rem;
+                grid-template-columns: 1fr;
+            }
+
+            .overview-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                align-items: center;
+            }
+
+            .overview-container video {
+                margin: 0 auto 1rem;
+            }
+
+            .afterimage {
+                grid-column: 1 / -1;
+                text-align: left;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+            }
+            p {
+                font-size: 0.9em;
+            }
+
+            ul, ol {
+                font-size: 0.9em;
+            }
+            li {
+                margin-bottom: 0.3em;
+            }
+        }
+
+        /* For very small screens */
+        @media (max-width: 480px) {
+            header {
+                height: 200px;
+            }
+            header h1 {
+                font-size: 1.8em;
+                padding: 0.3rem;
+            }
+
+            header p {
+                font-size: 0.9em;
+                padding: 0.3rem;
+            }
+            .venus-fact {
+                padding: 1rem;
+                font-size:0.8em;
+            }
+            p {
+                font-size: 0.8em;
+            }
+
+            ul, ol {
+                font-size: 0.8em;
+            }
+            section h2 {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+
+        <h1>Venus: The Veiled Planet</h1>
+        <p>A Journey Through the Cloud-Shrouded World</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Overview</h2>
+            <div class="overview-container">
+                <video autoplay loop muted>
+                    <source src="venus.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="overview-text">
+                    <p>Venus, often called Earth's "sister planet" due to its similar size and composition, is a world of extreme contrasts. Shrouded in thick, toxic clouds, its surface is a scorching hellscape, making it a fascinating yet inhospitable neighbor.</p>
+                    <p>The intense heat and crushing atmospheric pressure on Venus are a result of a runaway greenhouse effect. This makes the planet a stark reminder of the potential consequences of unchecked climate change.</p>
+
+                </div>
+            </div>
+            <p class="afterimage">Venus is only slightly smaller than Earth, with a diameter of about 12,104 kilometers (7,521 miles). Its mass is about 81.5% of Earth's. However, despite these similarities in size and mass, Venus is radically different in its environment.</p>
+            <h3 class = "afterimage">A Hellish Climate: The Runaway Greenhouse Effect</h3>
+            <p class = "afterimage">The atmosphere of Venus is incredibly dense, about 90 times that of Earth. It's composed primarily of carbon dioxide (about 96.5%) with clouds made of sulfuric acid. This thick atmosphere traps heat, creating an extreme greenhouse effect. As a result, Venus has a surface temperature of around 462°C (864°F), hotter than Mercury despite being farther from the Sun. </p>
+
+            <h3 class = "afterimage">A Landscape Shaped by Volcanoes and Ancient Activity</h3>
+            <p class ="afterimage">Beneath the dense clouds lies a landscape relatively smooth compared to other terrestrial planets, with vast plains covering about 80% of the surface. However, Venus is far from featureless. Volcanoes dot the landscape, both active and extinct, hinting at a history of intense geological activity. While there's no evidence of Earth-like plate tectonics, unique features such as coronae (circular or oval structures thought to be caused by upwelling magma) and tesserae (highly deformed terrain) suggest a dynamic and complex geological past.</p>
+
+            <h3 class="after">A Cautionary Tale with Lessons for Earth</h3>
+            <p class="after">Venus serves as a crucial reminder of the delicate balance that makes a planet habitable. Its runaway greenhouse effect highlights the potential consequences of unchecked carbon emissions and the importance of understanding planetary climates. By studying Venus, we gain invaluable insights into the processes that can shape a planet's destiny and the factors that contribute to habitability. The exploration of Venus is not just about understanding another planet; it's about learning more about our own world and the future of our own climate.</p>
+
+        </section>
+
+        <section>
+            <h2>Key Characteristics</h2>
+            <ul>
+                <li><b>Orbital Period:</b> 225 Earth days</li>
+                <li><b>Mass:</b>About 82% of Earth's mass.</li>
+                <li><b>Diameter:</b> 12,104 km</li>
+                <li><b>Surface Gravity:</b>0.91 g (about 91% of Earth's gravity).</li>
+                <li><b>Surface Temperature:</b> Approximately 462°C (864°F)</li>
+                <li><b>Atmosphere:</b>Extremely dense, primarily carbon dioxide with sulfuric acid clouds</li>
+                <li><b>Moons:</b> None</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Interesting Facts</h2>
+            <div class="venus-fact">
+                <p>"A day on Venus is longer than its year! Venus rotates so slowly that it takes about 243 Earth days to complete one rotation, while it orbits the Sun in only 225 Earth days."</p>
+            </div>
+            <div class="venus-fact">
+                <p>"Venus rotates in the opposite direction of most other planets in our solar system (retrograde rotation). This means that the Sun rises in the west and sets in the east on Venus."</p>
+            </div>
+            <div class="venus-fact">
+                <p>"Venus is the hottest planet in our solar system, even hotter than Mercury, which is closer to the Sun."</p>
+        </section>
+
+        <section>
+            <h2>Exploration</h2>
+            <p>Our understanding of Venus has been shaped by several key missions:</p>
+            <ul>
+                <li><b>Venera Program (1961-1984):</b> A series of Soviet probes that provided the first images from the surface of Venus.</li>
+                <li><b>Magellan (1990-1994):</b> A NASA mission that mapped 98% of Venus's surface using radar.</li>
+                <li><b>Venus Express (2006-2014):</b> An ESA mission that studied the Venusian atmosphere and plasma environment.</li>
+                <li><b>Akatsuki (2015-Present):</b> A JAXA mission studying Venus's atmosphere.
+                <li><b>Shukrayaan-1 (Planned):</b>ISRO,has approved a Venus Orbiter Mission (VOM), also known as Shukrayaan, to study Venus's surface, atmosphere, and geological features, aiming to understand the planet's evolution.</li>
+                </li>
+
+    </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Venus Information. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
