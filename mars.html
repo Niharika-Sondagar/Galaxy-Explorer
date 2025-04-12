@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mars</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #101010;
+            color: #fff;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        header {
+            position: relative;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(81, 91, 2, 0.4);
+            overflow: hidden;
+            text-shadow: 2px 2px 4px black;
+            height: 400px;
+            padding: 0;
+            background-image: url('mars.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 0.5em;
+            color: white;
+            position: relative;
+            z-index: 1;
+            padding: 1rem;
+        }
+
+        header p {
+            font-size: 1.5em;
+            color: white;
+            position: relative;
+            z-index: 1;
+            padding: 1rem;
+        }
+
+        /* Main Content Styles */
+        main {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #323738;
+            box-shadow: 0 0 20px #fbc531;
+            border-radius: 12px;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 2rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        /* Overview Section with Image/Text */
+        .overview-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-gap: 2rem;
+            align-items: start;
+        }
+
+        .overview-container video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px #fbc531;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .overview-container video:hover {
+            transform: scale(1.03);
+        }
+
+        /* Style for the two initial paragraphs */
+        .overview-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Put more than 2 paragraph after picture */
+        .afterimage {
+            grid-column: 1 / -1;
+        }
+
+        section h2 {
+            font-size: 2.5em;
+            color: #fbc531;
+            margin-bottom: 0.75em;
+            padding-bottom: 0.5em;
+            border-bottom: 2px solid #fbc531;
+        }
+
+        p {
+            margin-bottom: 1.2em;
+            color: #dfe6e9;
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 1.5em;
+            color: #dfe6e9;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        .mars-fact {
+            background-color: #060606;
+            padding: 1.5rem;
+            border-left: 5px solid #e1b12c;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .mars-fact p {
+            font-style: italic;
+            color: #fefefe;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #2d3436;
+            color: #fff;
+            text-align: center;
+            padding: 1.0rem 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            header {
+                height: 300px;
+            }
+
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            main {
+                max-width: 100%;
+                margin: 1rem auto;
+                padding: 1rem;
+                grid-template-columns: 1fr;
+            }
+
+            .overview-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                align-items: center;
+            }
+
+            .overview-container video {
+                margin: 0 auto 1rem;
+            }
+
+            .afterimage {
+                grid-column: 1 / -1;
+                text-align: left;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+            }
+            p {
+                font-size: 0.9em;
+            }
+
+            ul, ol {
+                font-size: 0.9em;
+            }
+            li {
+                margin-bottom: 0.3em;
+            }
+        }
+
+        /* For very small screens */
+        @media (max-width: 480px) {
+            header {
+                height: 200px;
+            }
+            header h1 {
+                font-size: 1.8em;
+                padding: 0.3rem;
+            }
+
+            header p {
+                font-size: 0.9em;
+                padding: 0.3rem;
+            }
+            .mars-fact {
+                padding: 1rem;
+                font-size:0.8em;
+            }
+            p {
+                font-size: 0.8em;
+            }
+
+            ul, ol {
+                font-size: 0.8em;
+            }
+            section h2 {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+
+        <h1>Mars: The Red Planet</h1>
+        <p>Exploring the Mysteries of Our Neighbor</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Overview</h2>
+            <div class="overview-container">
+                <video autoplay loop muted>
+                    <source src="mars.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="overview-text">
+                    <p>Mars, the fourth planet from the Sun, is known as the "Red Planet" due to its iron-rich surface. It has captivated scientists and the public alike with its potential for past or present life and the possibility of future human colonization.</p>
+                    <p>Mars features a diverse landscape including towering volcanoes like Olympus Mons (the largest volcano and highest known mountain in the solar system), vast canyons like Valles Marineris, and polar ice caps composed of water ice and carbon dioxide ice.</p>
+
+                </div>
+            </div>
+            <h3 class="afterimage">A Geological Tapestry: Volcanoes, Canyons, and Hints of a Wetter Past</h3>
+            <p class="afterimage">The Martian landscape is a canvas painted by geological forces spanning billions of years. Olympus Mons, the largest volcano and highest known mountain in our solar system, dominates the terrain. Valles Marineris, a colossal canyon system stretching for thousands of kilometers, dwarfs even the Grand Canyon on Earth. Impact craters, scattered across the surface, bear witness to a history of celestial collisions. Perhaps the most intriguing features are the telltale signs of past water: ancient riverbeds, dried-up lake basins, and the presence of hydrated minerals. These clues suggest that Mars was once a warmer, wetter place, potentially capable of supporting life.</p>
+
+            <h3 class = "afterimage">A Thin Atmosphere and a Search for Life's Traces</h3>
+            <p class ="afterimage"> Mars possesses a thin atmosphere, composed primarily of carbon dioxide, which offers little protection from solar radiation. This atmosphere is prone to dramatic dust storms that can engulf the entire planet, obscuring the surface for weeks or months. While the current environment is harsh, the evidence of past water has fueled the search for life on Mars. Numerous missions, from the Viking landers to the Curiosity and Perseverance rovers, have sought to uncover signs of past or present microbial life, analyzing Martian soil and rocks for organic molecules and other biosignatures.</p>
+
+             <h3 class = "afterimage">A Future for Humanity: Exploration and Potential Colonization </h3>
+             <p class = "afterimage">The allure of Mars extends beyond scientific discovery; it also encompasses the dream of human exploration and potential colonization. Space agencies and private companies are actively planning future missions to Mars, aiming to send humans to the Red Planet in the coming decades. While the challenges are immense – long travel times, radiation exposure, and limited resources – the potential rewards are even greater: new scientific knowledge, technological advancements, and a deeper understanding of our place in the cosmos. Mars represents a bold step in human evolution, a chance to expand our horizons and establish a foothold on another world.</p>
+
+           
+        </section>
+
+        <section>
+            <h2>Key Characteristics</h2>
+            <ul>
+                <li><b>Orbital Period:</b> 687 Earth days (1.9 Earth years)</li>
+                <li><b>Diameter:</b> 6,779 km (about half the size of Earth)</li>
+                <li><b>Mass:</b> 6.42 × 10^23 kg (about 10% of Earth's mass)</li>
+                <li><b>Surface Gravity:</b> 0.38 g (about 38% of Earth's gravity).</li>
+                <li><b>Surface Temperature:</b> Average -62°C (-80°F), but varies greatly</li>
+                <li><b>Atmosphere:</b> Thin atmosphere composed mainly of carbon dioxide (96%), argon (1.9%), nitrogen (1.9%)</li>
+                <li><b>Moons:</b> 2 (Phobos and Deimos)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Interesting Facts</h2>
+            <div class="mars-fact">
+                <p>"Evidence suggests that liquid water once flowed on the surface of Mars, and subsurface water ice still exists."</p>
+            </div>
+            <div class="mars-fact">
+                <p>"A Martian day (sol) is about 24.6 hours long, very similar to an Earth day."</p>
+            </div>
+            <div class="mars-fact">
+                <p>"Mars has the largest dust storms in the solar system, which can engulf the entire planet for months."</p>
+        </section>
+    
+    <section>
+        <h2>Exploration and Colonization</h2>
+        <p>Mars has been the target of numerous robotic missions, including orbiters, landers, and rovers, which have provided invaluable data about the planet. Future plans include human missions to Mars to search for signs of life and establish a permanent human presence.</p>
+        <ul>
+            <li><b>ISRO(2014):</b>Mars Orbiter Mission (MOM), also known as Mangalyaan, successfully entered Mars orbit , making India the first Asian nation and the fourth in the world to achieve this on its maiden attempt. </li>
+            <li>Rovers like Curiosity and Perseverance are currently exploring the Martian surface.</li>
+            <li>Space agencies like NASA, SpaceX, and others have ambitious plans for human missions to Mars.</li>
+            <li>The potential for terraforming Mars (making it more Earth-like) is a long-term goal.</li>
+        </ul>
+    </section>
+</main>
+
+    <footer>
+        <p>© 2025 Mars Information. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercury: The Swift Planet</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #101010;
+            color: #fff;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        header {
+            position: relative;
+            padding: 2rem 0;
+            text-shadow: 2px 2px 4px black;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(81, 91, 2, 0.4);
+            overflow: hidden;
+            height: 400px;
+            background-image: url('mercury.jpg'); /* Replace with your image */
+            background-size: cover;
+            background-position: center;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 0.5em;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        header p {
+            font-size: 1.5em;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Main Content Styles */
+        main {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #323738;
+            box-shadow: 0 0 20px #fbc531;
+            border-radius: 12px;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 2rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        /* Overview Section with Video/Text */
+        .overview-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+           
+            grid-gap: 2rem;
+            align-items: start;
+        }
+
+        .overview-container video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px #fbc531;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .overview-container video:hover {
+            transform: scale(1.03);
+        }
+
+        /* Style for the two initial paragraphs */
+        .overview-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Put more than 2 paragraph after video */
+        .afterimage {
+            grid-column: 1 / -1;
+        }
+
+        section h2 {
+            font-size: 2.5em;
+            color: #fbc531;
+            margin-bottom: 0.75em;
+            padding-bottom: 0.5em;
+            border-bottom: 2px solid #fbc531;
+        }
+
+        p {
+            margin-bottom: 1.2em;
+            color: #dfe6e9;
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 1.5em;
+            color: #dfe6e9;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        .mercury-fact {
+            background-color: #060606;
+            padding: 1.5rem;
+            border-left: 5px solid #e1b12c;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .mercury-fact p {
+            font-style: italic;
+            color: #fdffff;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #2d3436;
+            color: #fff;
+            text-align: center;
+            padding: 1.0rem 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            header {
+                height: 300px;
+            }
+
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            main {
+                max-width: 100%;
+                margin: 1rem auto;
+                padding: 1rem;
+                grid-template-columns: 1fr;
+            }
+
+            .overview-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                align-items: center;
+            }
+
+            .overview-container video {
+                margin: 0 auto 1rem;
+            }
+
+            .afterimage {
+                grid-column: 1 / -1;
+                text-align: left;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+            }
+
+             p {
+                font-size: 0.9em;
+            }
+
+            ul, ol {
+                font-size: 0.9em;
+            }
+            li {
+                margin-bottom: 0.3em;
+            }
+        }
+
+        /* For very small screens */
+        @media (max-width: 480px) {
+            header {
+                height: 200px;
+            }
+            header h1 {
+                font-size: 1.8em;
+                padding: 0.3rem;
+            }
+
+            header p {
+                font-size: 0.9em;
+                padding: 0.3rem;
+            }
+              .mercury-fact {
+                padding: 1rem;
+                font-size:0.8em;
+            }
+             p {
+                font-size: 0.8em;
+            }
+
+            ul, ol {
+                font-size: 0.8em;
+            }
+
+            section h2 {
+                font-size: 1.6em;
+            }
+        }
+
+        /* Animations */
+        header {
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        main {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Mercury: The Swift Planet</h1>
+        <p>A Journey to the Sun's Doorstep</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Overview</h2>
+            <div class="overview-container">
+                <video autoplay loop muted>
+                    <source src="mercury.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="overview-text">
+                    <p>Mercury, the swift planet, is the smallest in our solar system and the closest to the Sun. Its heavily cratered surface, reminiscent of our Moon, tells a story of intense bombardment. This proximity leads to extreme temperature variations, making it a world of fire and ice.</p>
+                    <p>Unlike many other planets, Mercury possesses a surprisingly large iron core, which accounts for a significant portion of its volume.</p>
+                </div>
+            </div>
+            <h3 class="afterimage">A Planet of Extremes: Size, Orbit, and Temperature</h3>
+            <p class="afterimage">This dense core and a weak magnetic field continue to puzzle scientists, driving further exploration and research. Mercury is significantly smaller than Earth, with a diameter of only about 4,880 kilometers (3,032 miles). This is only about 38% of Earth's diameter, making it only slightly larger than our Moon. Its proximity to the Sun is what truly defines Mercury. It orbits our star at an average distance of only 57.9 million kilometers (36 million miles), completing a full orbit in just 88 Earth days – a remarkably short year.</p>
+
+            <h3 class="afterimage">A Surface Sculpted by Impacts and Ancient Volcanoes</h3>
+            <p class="afterimage">Mercury's surface is heavily cratered, bearing a striking resemblance to the Moon. These craters are the result of countless impacts from asteroids and comets over billions of years. One of the most prominent features is the Caloris Basin, a massive impact crater spanning approximately 1,550 kilometers (960 miles) in diameter. The impact that created this basin was so powerful that it sent seismic waves reverberating around the planet, creating a region of jumbled terrain known as "weird terrain" on the opposite side. In addition to craters, Mercury also features smooth plains, believed to have been formed by ancient volcanic activity. These plains likely arose from lava flows that covered older, more heavily cratered regions.</p>
+
+            <h3 class="after">A Surprisingly Strong Magnetic Field and a Thin Exosphere</h3>
+            <p class="after">One of the most unexpected discoveries about Mercury was the presence of a magnetic field. This was surprising because scientists thought that a planet as small as Mercury, with its slow rotation, shouldn't have one. Mercury's magnetic field is only about 1% as strong as Earth's, but its existence is still a puzzle. It's believed to be generated by a dynamo effect, where the motion of molten iron in the planet's core creates electric currents that generate a magnetic field. Mercury also possesses an extremely thin exosphere, a tenuous layer of gases surrounding the planet. This exosphere is composed of atoms that have been knocked off the surface by the solar wind, micrometeoroid impacts, and thermal desorption.</p>
+
+        </section>
+
+        <section>
+            <h2>Key Characteristics</h2>
+            <ul>
+                <li><b>Orbital Period:</b> A year on Mercury is only 88 Earth days!</li>
+                <li><b>Diameter:</b> At 4,879 km, it's just a bit larger than Earth's Moon.</li>
+                <li><b>Mass:</b> About 5.5% of Earth's mass</li>
+                <li><b>Surface Temperature:</b> Ranges from a scorching 430°C (800°F) during the day to a frigid -180°C (-290°F) at night.</li>
+                <li><b>Atmosphere:</b> A virtually nonexistent exosphere.</li>
+                <li><b>Moons:</b> Mercury has no moons.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Interesting Facts</h2>
+            <div class="mercury-fact">
+                <p>"Mercury is the fastest planet in the solar system, traveling around the Sun at an average speed of 48 kilometers per second."</p>
+            </div>
+            <div class="mercury-fact">
+                <p>"One day on Mercury lasts almost 59 Earth days, making its day longer than its year!"</p>
+            </div>
+            <div class="mercury-fact">
+                <p>"Mercury is the second densest planet in the Solar System, a testament to its massive iron core."</p>
+            </div>
+            <div class="mercury-fact">
+                <p>"Despite its proximity to the sun, water ice has been detected in permanently shadowed craters near its poles."</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Exploration</h2>
+            <p>Our understanding of Mercury has been shaped by several key missions:</p>
+            <ul>
+                <li><b>Mariner 10 (1974-1975):</b> The first spacecraft to visit Mercury, providing initial images of its surface.</li>
+                <li><b>MESSENGER (2011-2015):</b> A NASA mission that orbited Mercury, mapping its entire surface and revealing its composition.</li>
+                <li><b>BepiColombo (Ongoing):</b> ISRO (Indian Space Research Organisation) currently has no dedicated mission to explore Mercury, the international BepiColombo mission, launched in 2018, is scheduled to enter orbit around Mercury in December 2025.
+                </li>
+
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Mercury Information. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
