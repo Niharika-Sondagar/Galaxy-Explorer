@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Galaxy Explorer</title>
+    <style>
+        /* --- Basic Reset & Defaults --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            background-color: #101010; /* Even darker space blue/black */
+            color: #e8eaed; /* Google-style light grey text */
+            padding-bottom: 4rem; /* Ensure footer doesn't overlap content */
+            min-height: 100vh; /* Ensure footer is at least at the bottom */
+            display: flex; /* Use flexbox for footer positioning */
+            flex-direction: column; /* Stack elements vertically */
+        }
+
+        a {
+            color: #8ab4f8; /* Google blue for links */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #aecbfa;
+        }
+
+        /* --- Header --- */
+        .page-header {
+            background-color: #1b263b; /* Dark grey-blue */
+            color: #fff;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #94a2b5; /* Medium grey-blue border */
+        }
+
+        .page-header h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: #d1d5db; /* Lighter grey */
+        }
+
+        /* --- Main Content Area --- */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            flex-grow: 1; /* Allows main content to push footer down */
+        }
+
+        /* --- Contact Info Styling --- */
+        .contact-details {
+             background-color: #1b263b;
+             border: 1px solid #4b5563;
+             border-radius: 10px;
+             padding: 2rem 2.5rem; /* Increased padding */
+             box-shadow: 0 5px 20px rgb(173, 226, 247);
+             margin-top: 1rem; /* Added some top margin */
+        }
+
+         .contact-details h2 { /* Changed from h3 for semantic hierarchy */
+            margin-bottom: 1.5rem; /* Increased margin */
+            color: #ffffff;
+            font-weight: 500;
+            border-bottom: 1px solid #4b5563;
+            padding-bottom: 1rem; /* Increased padding */
+            text-align: center; /* Center heading */
+         }
+
+        .contact-details p {
+            margin-bottom: 1rem; /* Increased spacing */
+            color: #d1d5db;
+            line-height: 1.8;
+            font-size: 1.05rem; /* Slightly larger text */
+        }
+
+         .contact-details strong {
+            color: #e8eaed;
+            min-width: 70px; /* Adjust alignment */
+            display: inline-block;
+            margin-right: 5px; /* Space after label */
+         }
+
+
+        /* --- Footer --- */
+        .page-footer {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            margin-top: 3rem; /* Ensure space above footer */
+            background-color: #1b263b;
+            color: white;
+            font-size: 0.9rem;
+            border-top: 1px solid #4b5563;
+            flex-shrink: 0; /* Prevent footer from shrinking */
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.1rem;
+            }
+             .contact-details {
+                padding: 1.5rem 2rem;
+             }
+             .contact-details h2 {
+                 font-size: 1.4rem;
+             }
+             .contact-details p {
+                 font-size: 1rem;
+             }
+        }
+         @media (max-width: 480px) {
+             .contact-details {
+                 padding: 1.2rem 1.5rem;
+             }
+             .contact-details h2 {
+                 font-size: 1.3rem;
+             }
+         }
+
+    </style>
+</head>
+<body>
+
+    <header class="page-header">
+        <h1>Contact Galaxy Explorer</h1>
+        <p>Get in touch or explore official space agency resources.</p>
+    </header>
+
+    <main class="container">
+
+        <!-- Contact Details Section -->
+        <div class="contact-details">
+             <h2>Contact Information & Resources</h2>
+             <p><strong>Email:</strong> <a href="mailto:contact@galaxyexplorer.example.com">contact@galaxyexplorer.example.com</a> (Placeholder)</p>
+             <p><strong>Phone:</strong> +1 (555) SPACE-01 (Placeholder)</p>
+             <p><strong>NASA:</strong> <a href="https://www.nasa.gov/" target="_blank" rel="noopener noreferrer">Visit NASA Official Website</a></p>
+             <p><strong>ISRO:</strong> <a href="https://www.isro.gov.in/" target="_blank" rel="noopener noreferrer">Visit ISRO Official Website</a></p>
+        </div>
+        <!-- End Contact Details Section -->
+
+    </main>
+
+    <footer class="page-footer">
+        <p>© 2025 Galaxy Explorer Command. Exploring the final frontier, one pixel at a time.</p>
+    </footer>
+
+</body>
+</html>

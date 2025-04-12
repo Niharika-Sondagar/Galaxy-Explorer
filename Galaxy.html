@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galaxy Explorer - Deeper Dive</title>
+  <style>
+    /* --- [ PREVIOUS CSS REMAINS THE SAME ] --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      /* Updated gradient for potentially deeper space feel */
+      background: radial-gradient(ellipse at bottom, #0b0f2a 0%, #000000 100%);
+      color: #f0f0f0;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+     h3{
+        font-size: 20px;
+        font-style: initial;
+     }
+    /* Starfield Background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      /* Using a different potentially denser star image */
+      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      animation: starScroll 180s linear infinite; /* Slightly faster scroll */
+      opacity: 0.6; /* Slightly less opaque */
+      z-index: -1;
+    }
+
+    @keyframes starScroll {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 10000px; } /* Vertical scroll */
+    }
+
+    header {
+      background-color: rgba(26, 31, 60, 0.85); /* Slightly transparent header */
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(100, 100, 255, 0.2);
+      border-bottom: 1px solid #2a2f4c; /* Subtle border */
+    }
+    header h1 {
+      font-size: 3rem;
+      color: #faf9fb;
+      text-shadow: 0 0 5px #fff,    /* Inner white glow */
+                         0 0 10px #9bcaf1,   /* Medium white glow */
+                         0 0 15px #1d73a5,   /* Outer white glow */
+                         0 0 20px #022c4f, /* Fainter blue outer glow (optional color hint) */
+                         0 0 30px #03053d; 
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #bbb;
+    }
+
+
+    main {
+      padding: 2rem;
+      max-width: 950px; /* Slightly wider content area */
+      margin: 2rem auto; /* Add margin top/bottom */
+    }
+
+    section {
+      background: rgba(21, 24, 50, 0.4); /* Darker, more transparent background */
+      padding: 2rem 2.5rem; /* Adjust padding */
+      border-radius: 10px; /* Slightly less rounded */
+      margin-bottom: 3rem;
+      box-shadow: 0 0 15px rgb(164, 220, 242); /* Adjusted shadow */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(120, 120, 255, 0.1); /* Subtle border */
+    }
+
+    section:hover {
+      transform: translateY(-5px) scale(1.01); /* Add slight scale on hover */
+      box-shadow: 0 0 35px rgba(180, 180, 255, 0.2);
+      border-color: rgba(180, 180, 255, 0.2);
+    }
+
+    h2 {
+      color: #edeaf6;
+      margin-bottom: 1.5rem; /* Increased margin */
+      font-size: 1.8rem; /* Slightly larger section heading */
+      border-bottom: 1px solid rgba(120, 120, 255, 0.2); /* Underline heading */
+      padding-bottom: 0.5rem;
+    }
+
+    ul {
+      list-style: none; /* Remove default bullets */
+      padding-left: 0; /* Remove default padding */
+    }
+    /* Add custom bullets */
+    ul li {
+        padding-left: 1.5em;
+        position: relative;
+        margin-bottom: 0.8em;
+    }
+    ul li::before {
+        content: '✧'; /* Star-like bullet */
+        position: absolute;
+        left: 0;
+        color: rgb(127, 199, 236); /* Accent color for bullet */
+        font-size: 1.8em;
+        line-height: 1;
+    }
+
+    /* Style for image within list items (galaxy types) */
+    .list-image {
+        max-width: 250px; /* Smaller image for lists */
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        margin: 0.8rem 0 0.5rem 0; /* Spacing around image */
+        display: block; /* Ensure block display */
+        transition: transform 0.3s ease;
+    }
+    .list-image:hover {
+        transform: scale(1.05);
+    }
+
+
+    .galaxy-image {
+      width: 100%;
+      height: auto; /* Maintain aspect ratio */
+      max-height: 450px; /* Limit max height */
+      object-fit: cover; /* Cover the area nicely */
+      border-radius: 10px; /* Match section radius */
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+      margin: 1.5rem 0; /* Increased margin */
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      display: block; /* Ensure block display */
+    }
+
+    .galaxy-image:hover {
+      transform: scale(1.02); /* Reduced scale effect */
+      opacity: 0.9; /* Slight opacity change on hover */
+    }
+
+    /* --- ADDED CSS FOR VIDEO EMBEDS --- */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      background: #000; /* Optional: background while loading */
+      border-radius: 10px; /* Match section/image radius */
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.15); /* Match image shadow */
+      margin: 1.5rem 0; /* Consistent margin */
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0; /* Remove default iframe border */
+    }
+    /* --- END OF ADDED CSS --- */
+
+    footer {
+      background: #1b263b;
+      text-align: center;
+      padding: 1.5rem;
+      color:white;
+      font-size: 0.9rem;
+      border-top: 1px solid #222;
+      margin-top: 2rem; /* Ensure space before footer */
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        text-shadow: 0 0 10px #b5e6f7, 0 0 20px #84cae8, 0 0 30px #5eccf1;
+      }
+      50% {
+        text-shadow: 0 0 20px #a4dbf3, 0 0 30px #90d7f5, 0 0 40px #5cc8f7;
+      }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.5rem; }
+      header p { font-size: 1rem; }
+      
+      section { padding: 1.5rem; }
+      h2 { font-size: 1.5rem; }
+      .list-image { max-width: 200px; }
+    }
+    @media (max-width: 480px) {
+      header h1 { font-size: 2rem; }
+      
+      main { padding: 1rem; }
+      section { padding: 1.5rem 1rem; }
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Exploration of Galaxies</h1>
+    <p>Discover the vast and wondrous structures of the cosmos</p>
+  </header>
+  
+  <main>
+    <section id="overview">
+      <h2>What is a Galaxy?</h2>
+      <p>
+        A galaxy is an immense, gravitationally bound system consisting of stars, stellar remnants (like white dwarfs and neutron stars), interstellar gas and dust, dark matter, and potentially planets. These cosmic islands drift through the universe, ranging in size from dwarf galaxies with just a few million stars to giants containing hundreds of trillions of stars, all orbiting a common center of mass.
+      </p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/NGC_4414_%28NASA-med%29.jpg/1024px-NGC_4414_%28NASA-med%29.jpg" alt="Spiral Galaxy NGC 4414 showing dust lanes and star clusters" class="galaxy-image"/>
+      <p>
+        Galaxies are the fundamental building blocks of the large-scale structure of the universe. They group together under gravity to form clusters and superclusters, separated by vast cosmic voids. Studying galaxies helps us understand the evolution of the universe, star formation, and the nature of dark matter.
+      </p>
+    </section>
+
+    <section id="types">
+      <h2>Types of Galaxies</h2>
+      <p>Galaxies are broadly classified based on their visual morphology (shape). The main types include:</p>
+      <ul>
+        <li>
+            <h3>Spiral Galaxies:</h3> Characterized by a flat, rotating disk containing stars, gas, and dust, often organized into prominent spiral arms. They typically have a central bulge housing older stars. Our Milky Way is a barred spiral galaxy.
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/M101_hires_STScI-PRC2006-10a.jpg/1024px-M101_hires_STScI-PRC2006-10a.jpg" alt="The Pinwheel Galaxy (M101), a classic spiral galaxy" class="list-image"/>
+        </li>
+        <li>
+            <h3>Elliptical Galaxies:</h3> These galaxies have a smooth, ellipsoidal (oval) shape and lack distinct spiral arms. They contain mostly older stars, have very little interstellar gas and dust, and exhibit less active star formation compared to spirals.
+            <img src="https://www.nasa.gov/wp-content/uploads/2023/03/112040main_image_feature_299_ys_full.jpg" alt="Elliptical Galaxy NGC 1132" class="list-image"/>
+        </li>
+        <li>
+            <h3>Irregular Galaxies:</h3> Lacking a distinct, regular shape, these galaxies often appear chaotic. Their structure might be the result of gravitational interactions or collisions with other galaxies, triggering bursts of star formation.
+             <img src="https://science.nasa.gov/wp-content/uploads/2023/06/hubble-ngc7292-potw2324a-jpg.webp?resize=1200,1049" alt="Irregular Galaxy Large Magellanic Cloud" class="list-image"/>
+        </li>
+         <li><h3>Lenticular Galaxies:</h3> Considered an intermediate type between spirals and ellipticals. They have a disk component like spirals but lack prominent spiral arms and have little ongoing star formation, similar to ellipticals.</li>
+      </ul>
+    </section>
+
+    <section id="milky-way">
+        <h2>Our Home: The Milky Way</h2>
+        <p>
+            We live inside the Milky Way, a large barred spiral galaxy estimated to be about 100,000-120,000 light-years in diameter. It contains an estimated 100-400 billion stars, including our own Sun.
+        </p>
+        <img src="https://d.newsweek.com/en/full/2422304/milky-way.jpg?w=1600&h=1600&q=88&f=3c733ad604244402bde12c0d4d979c89" alt="Panorama of the Milky Way arching across the night sky" class="galaxy-image"/>
+        <p>
+            Our solar system is located in one of the Milky Way's minor spiral arms, the Orion Arm (or Orion Spur), about 27,000 light-years from the galactic center. At the heart of our galaxy lies a supermassive black hole named Sagittarius A* (pronounced "A-star"), with a mass about 4 million times that of our Sun.
+        </p>
+    </section>
+
+     <section id="andromeda">
+        <h2>Our Neighbor: Andromeda (M31)</h2>
+        <p>
+            The Andromeda Galaxy (Messier 31 or M31) is the nearest large spiral galaxy to the Milky Way, located approximately 2.5 million light-years away in the constellation Andromeda. It's slightly larger than the Milky Way in diameter and contains perhaps one trillion stars.
+        </p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Andromeda_Galaxy_%28with_h-alpha%29.jpg/1024px-Andromeda_Galaxy_%28with_h-alpha%29.jpg" alt="The Andromeda Galaxy (M31) showing its vast spiral structure" class="galaxy-image"/>
+        <p>
+           Under dark skies, Andromeda is visible to the naked eye as a faint, fuzzy patch. It's part of the Local Group of galaxies, along with the Milky Way and Triangulum Galaxy. Excitingly (or perhaps terrifyingly), Andromeda is on a collision course with the Milky Way, predicted to merge with our galaxy in about 4.5 billion years, forming a giant elliptical galaxy sometimes dubbed "Milkomeda".
+        </p>
+    </section>
+
+    <section id="blackholes">
+      <h2>Cosmic Mysteries: Black Holes</h2>
+      <p>
+        Black holes are regions in spacetime where gravity is so strong that nothing—not even light—can escape. They form when massive stars collapse under their own gravity at the end of their lives. Smaller black holes (stellar mass) can have masses a few times that of our Sun.
+      </p>
+
+      <!-- === VIDEO EMBED FOR BLACK HOLES === -->
+      <div class="video-container">
+        <iframe
+          src="https://cdn.pixabay.com/video/2022/11/18/139586-773417795_large.mp4"  <!-- ******* REPLACE THIS with your actual Black Hole YouTube embed URL ******* -->
+          title="YouTube video player - Black Holes"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <!-- === END VIDEO EMBED === -->
+
+      <p>
+        Supermassive black holes, millions to billions of times the mass of the Sun, reside at the centers of most large galaxies, including our own Milky Way (Sagittarius A*) and Andromeda. While invisible themselves, their presence can be inferred by their gravitational effects on nearby stars and gas.
+      </p>
+    </section>
+
+    <section id="stars">
+      <h2>Stars: The Galaxy's Building Blocks</h2>
+      <p>
+        Stars are immense, luminous spheres of plasma held together by their own gravity. Nuclear fusion reactions in their cores, primarily converting hydrogen to helium, release tremendous amounts of energy, making them shine. Galaxies are primarily composed of these stellar bodies.
+      </p>
+      <img src="star2.jpg" alt="A dense star cluster showing stars of various colors and brightnesses" class="galaxy-image"/>
+      <p>
+        Stars vary greatly in size, mass, temperature, color, and lifespan. Massive blue stars burn hot and fast, living only millions of years, while smaller, cooler red dwarf stars can potentially live for trillions of years. Our Sun is a relatively average, middle-aged yellow dwarf star. The life cycle of a star dictates whether it ends as a white dwarf, neutron star, or black hole, enriching the galaxy with heavier elements in the process.
+      </p>
+    </section>
+
+     <section id="clusters">
+        <h2>Cosmic Structures: Galaxy Clusters</h2>
+        <p>
+            Galaxies themselves are not uniformly distributed throughout the universe; they tend to congregate due to gravity. Groups and clusters are the largest known gravitationally bound structures.
+        </p>
+        <ul>
+            <li><h3>Galaxy Groups:</h3> Smaller collections, typically containing fewer than 50 galaxies. Our own Local Group, containing the Milky Way, Andromeda, Triangulum, and several dozen smaller dwarf galaxies, is an example.</li>
+            <li><h3>Galaxy Clusters:</h3> Larger structures containing hundreds to thousands of galaxies, bound together by immense gravitational pull, largely attributed to dark matter. They also contain vast amounts of superheated gas (intracluster medium).</li>
+        </ul>
+
+        <p>These clusters and groups are interconnected, forming even larger structures called superclusters, which are arranged in filaments and walls surrounding vast, relatively empty regions known as cosmic voids.</p>
+    </section>
+
+
+    <section id="facts">
+      <h2>Interesting Galaxy Facts</h2>
+      <ul>
+        <li>The light we see from the Andromeda Galaxy left it 2.5 million years ago!</li>
+        <li>Some galaxies have "active galactic nuclei" (AGN) powered by accretion onto their central supermassive black holes, making them incredibly luminous (quasars are an example).</li>
+        <li>Galaxies grow through mergers and by accreting smaller dwarf galaxies and gas clouds over billions of years.</li>
+        <li>Dark matter, an invisible substance, makes up about 85% of the total matter in the universe and plays a crucial role in galaxy formation and structure.</li>
+        <li>The oldest known galaxy observed so far formed just a few hundred million years after the Big Bang.</li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 Galaxy Explorer. Explore the cosmos!</p> <!-- Updated year and text -->
+  </footer>
+</body>
+</html>

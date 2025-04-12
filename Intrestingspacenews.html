@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interesting Space News</title>
+    <style>
+        /* --- Basic Reset & Defaults --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            background-color: #101010; /* Dark space blue */
+            color: #e0e0e0; /* Light grey text */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px; /* Rounded corners for images */
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: #8ab4f8; /* Lighter blue for links on dark background */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #c7dfff;
+        }
+
+        /* --- Header --- */
+        .page-header {
+            background-color: #1b263b; /* Slightly lighter dark blue */
+            color: #fff;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #a2d4f5;
+        }
+
+        .page-header h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-shadow:0 0 20px #fff,
+                   0 0 30px #86c3ea;
+      
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: #fcfcfc; /* Lighter steel blue */
+        }
+
+        /* --- NASA Link Section --- */
+        .nasa-link-section {
+            text-align: center;
+            padding: 1rem;
+            margin: 0 auto 2rem auto;
+            max-width: 800px;
+            background-color: #1b263b; /* Semi-transparent darker background */
+            box-shadow: 0 3px 15px #a8d4f8;
+            border-radius: 8px;
+            border: 1px solid #415a77;
+        }
+
+        .nasa-link-section p {
+            font-size: 1rem;
+            color: #e0e0e0;
+        }
+
+        /* --- Main Content Area --- */
+        .container {
+            max-width: 900px; /* Good width for reading */
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* --- News Article Styling --- */
+        .news-article {
+            background-color: #1b263b; /* Card background */
+            border: 1px solid #415a77;
+            border-radius: 10px;
+            padding: 1.5rem 2rem; /* More padding */
+            margin-bottom: 2.5rem; /* More spacing */
+            box-shadow: 0 4px 15px rgb(172, 220, 239);
+        }
+
+        .news-article h2 { /* Headline */
+            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
+            color: #ffffff; /* White headline */
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .news-article .meta {
+            font-size: 0.9rem;
+            color: #adb5bd; /* Lighter grey for meta */
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #415a77; /* Separator line */
+            padding-bottom: 1rem;
+        }
+         .news-article .meta .source {
+            font-weight: bold;
+         }
+
+        .news-article .content p {
+            margin-bottom: 1rem; /* Spacing between paragraphs */
+            color: #d3d3d3; /* Slightly dimmer text for content */
+            text-align: justify; /* Justify text for block appearance */
+        }
+
+        /* Optional: Style the first paragraph differently */
+        .news-article .content p:first-of-type {
+            font-size: 1.05em; /* Slightly larger first paragraph */
+             color: #e0e0e0;
+        }
+
+
+        /* --- Footer --- */
+        .page-footer {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            margin-top: 3rem;
+            background-color: #1b263b;
+            color: #fbfbfc;
+            font-size: 0.9rem;
+            border-top: 1px solid #415a77;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+             .news-article h2 {
+                font-size: 1.5rem;
+            }
+            .news-article {
+                padding: 1rem 1.5rem;
+            }
+        }
+         @media (max-width: 480px) {
+            body {
+                line-height: 1.6; /* Slightly adjust line height for small screens */
+            }
+             .news-article {
+                padding: 1rem;
+            }
+              .news-article h2 {
+                font-size: 1.3rem;
+            }
+             .news-article .content p {
+                 text-align: left; /* Switch from justify on small screens if needed */
+             }
+         }
+
+    </style>
+</head>
+<body>
+
+    <header class="page-header">
+        <h1>Interesting Space News</h1>
+        <p>Highlights from the frontiers of cosmic exploration</p>
+    </header>
+
+    <div class="nasa-link-section">
+        <p>For the latest official news and discoveries, visit the <a href="https://www.nasa.gov/news/" target="_blank" rel="noopener noreferrer">NASA News & Features</a> page.</p>
+    </div>
+
+    <main class="container">
+
+        <!-- News Article 1 -->
+        <article class="news-article">
+            <h2>Webb Telescope Unveils Chaotic Beauty in the Pillars of Creation</h2>
+            <p class="meta">Date: October 26, 2024 | Source: <span class="source">ESA/Webb</span></p>
+            <img src="https://images.indianexpress.com/2022/10/James-Webb-Telescope-Pillars-of-Creation.jpg" alt="Webb Telescope image of the Pillars of Creation">
+            <div class="content">
+                <p>The James Webb Space Telescope has captured the iconic Pillars of Creation in stunning, unprecedented detail, revealing hundreds of previously unseen young stars forming within the dense clouds of gas and dust. Located in the Eagle Nebula, roughly 6,500 light-years away, these towering structures are nurseries where stars are born.</p>
+                <p>Webb's infrared vision pierces through much of the obscuring dust, showing glowing knots of gas and dust where stars are actively coalescing. Reddish areas highlight energetic jets ejected by newborn stars as they interact with the surrounding material. The image provides invaluable data for scientists studying the early stages of star formation, helping them refine models of how stars emerge from these cosmic clouds and how the intense radiation from nearby massive stars shapes the nebula.</p>
+                <p>Comparing Webb's view with previous images from Hubble showcases the power of infrared observation. While Hubble provided a majestic visible-light view, Webb reveals the intricate processes happening within the pillars, offering a deeper understanding of the dynamic interplay between star birth and the erosion of the pillars themselves by stellar winds and radiation.</p>
+            </div>
+        </article>
+
+        <!-- News Article 2 -->
+        <article class="news-article">
+            <h2>Perseverance Rover Collects Intriguing Samples from Ancient Martian River Delta</h2>
+            <p class="meta">Date: October 25, 2024 | Source: <span class="source">NASA/JPL-Caltech</span></p>
+             <img src="https://www.techexplorist.com/wp-content/uploads/2022/09/Skinner-Ridge.jpg" alt="NASA's Perseverance rover on Mars">
+            <div class="content">
+                <p>NASA's Perseverance rover continues its exploration of Jezero Crater, focusing on the well-preserved remnants of an ancient river delta. The rover has successfully drilled and cached several rock core samples from this region, which scientists believe holds significant clues about Mars' potential past habitability.</p>
+                <p>Analysis by the rover's onboard instruments indicates the presence of fine-grained sedimentary rocks, formed in what was likely a calm lake environment billions of years ago. Crucially, some samples contain organic molecules – carbon-based compounds that are building blocks of life as we know it. While organics can be formed by non-biological processes, their presence in an environment once suitable for life makes these samples prime candidates for return to Earth via the future Mars Sample Return mission.</p>
+                <p>These samples, carefully sealed in tubes, represent a potential treasure trove for future analysis in advanced laboratories back on Earth. Scientists hope to determine the origin of these organic molecules and search for definitive biosignatures – signs of ancient microbial life – which would be a monumental discovery in our quest to understand if life ever existed beyond Earth.</p>
+            </div>
+        </article>
+
+        <!-- News Article 3 -->
+         <article class="news-article">
+            <h2>Artemis Program Gears Up for Crewed Lunar Flyby Mission</h2>
+            <p class="meta">Date: October 24, 2024 | Source: <span class="source">NASA</span></p>
+            <img src="https://scitechdaily.com/images/Blue-Origin-Crewed-Lander-scaled.jpg" alt="Illustration of the Orion spacecraft orbiting the Moon">
+            <div class="content">
+                <p>Following the successful uncrewed Artemis I mission, NASA and its international partners are making significant progress towards Artemis II, the program's first mission that will carry astronauts around the Moon and back. This crucial test flight will pave the way for future lunar landings and sustained human presence on the Moon.</p>
+                <p>The mission will see a crew of four astronauts launch aboard the powerful Space Launch System (SLS) rocket inside the Orion spacecraft. They will perform a lunar flyby, venturing farther from Earth than any humans before, testing Orion's life support, communication, and navigation systems in deep space. The crew will experience the challenges and wonders of traveling beyond low Earth orbit, providing vital data and operational experience.</p>
+                <p>Preparations include rigorous crew training, finalizing modifications to the Orion spacecraft based on Artemis I data, and preparing the SLS rocket and ground systems at Kennedy Space Center. Artemis II represents a critical step in humanity's return to the Moon, aiming not just for brief visits but for establishing a long-term foothold for science and exploration, potentially serving as a stepping stone for future missions to Mars.</p>
+             </div>
+        </article>
+
+        <!-- Add more <article> blocks here for more news -->
+
+    </main>
+
+    <footer class="page-footer">
+        <p>© 2025 Interesting Space News. Placeholder content used. Verify information via linked NASA source or other reputable outlets.</p>
+    </footer>
+
+</body>
+</html>
