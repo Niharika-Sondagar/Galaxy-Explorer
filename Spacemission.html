@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Space Missions - Dark Theme (Separated Header)</title>
+    <style>
+        /* Basic Reset & Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a; /* Dark background */
+            color: #e0e0e0;          /* Light text */
+            text-align: center;
+            /* Removed body padding, apply to containers if needed */
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Main content container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto; /* Center container */
+             padding: 0 20px; /* Add padding here instead of body */
+        }
+
+        /* Header Styles (Now only for Navbar) */
+        header {
+            background-color: #1b263b;
+            box-shadow: 0 4px 10px rgb(159, 220, 240);
+            padding: 10px 25px; /* Adjusted padding for navbar only */
+            /* Removed border-radius and margin-bottom if it shouldn't apply just to nav */
+            /* border-radius: 10px; */
+            /* margin-bottom: 30px; */
+        }
+
+        /* --- Navigation Bar Specific Styles (Inside Header) --- */
+        .nav-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          max-width: 1200px;
+          margin: 0 auto;
+          /* Removed padding-bottom as title is separate */
+        }
+
+        .logo-link {
+            order: 0;
+            flex-shrink: 0;
+        }
+        .logo-link img {
+            display: block;
+            height: 60px;
+            width: auto;
+            margin: 0;
+        }
+
+        #menu-toggle {
+          display: none;
+        }
+
+        .menu-icon {
+          display: none;
+          font-size: 2rem;
+          cursor: pointer;
+          color: #8ae4fa;
+          padding: 0.5rem 0;
+          order: 1;
+        }
+
+        nav {
+            order: 2;
+        }
+
+        nav ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1rem 1.5rem;
+        }
+
+        nav a {
+          color: #d5d6d7;
+          text-decoration: none;
+          font-weight: 400;
+          font-size: 20px;
+          padding: 0.5rem 0;
+          transition: color 0.3s ease;
+          position: relative;
+        }
+
+        nav a:hover {
+          color: #ffffff;
+        }
+
+        nav a::after {
+          content: '';
+          position: absolute;
+          width: 0;
+          height: 2px;
+          bottom: 0;
+          left: 0;
+          background-color: #b2d9f8;
+          transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+          width: 100%;
+        }
+
+        nav ul li {
+              position: relative;
+              padding-left: 1.8rem;
+              margin-bottom: 0;
+              list-style: none;
+        }
+
+        nav ul li::before {
+              content: '▹';
+              position: absolute;
+              left: 0;
+              top: 50%;
+              transform: translateY(-50%);
+              color: #acd8fc;
+              font-size: 2.4em;
+              line-height: 1;
+         }
+        /* --- End Navigation Bar Specific Styles --- */
+
+        /* NEW Container for Page Title (Outside Header) */
+        .page-title-container {
+            padding: 25px 15px; /* Restore padding */
+            margin-bottom: 30px; /* Restore margin */
+            text-align: center; /* Ensure centering */
+            /* background-color: #some-color; /* Optional: Add background if needed */
+        }
+
+        /* Styles for H1 and P moved outside header */
+        .page-title-container h1 {
+            text-shadow: 0 0 5px #b5e4f1,    /* Inner white glow */
+                         0 0 10px #8ad9f2,   /* Medium white glow */
+                         0 0 15px #03bffe,   /* Outer white glow */
+                         0 0 20px #0c83b6, /* Fainter blue outer glow (optional color hint) */
+                         0 0 30px #080542;
+            font-size: 2.6rem;
+            color: #f0f0f0;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .page-title-container p {
+            font-size: 1.1rem;
+            color: #ccc;
+             width: 100%;
+        }
+
+
+        /* Mission Cards Grid */
+        .missions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .mission-card {
+            background: #1b263b;
+            box-shadow: 0 2px 8px rgb(159, 220, 240);
+            padding: 15px;
+            width: 280px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            text-align: center;
+        }
+
+        .mission-card img {
+            width: 100%;
+            height: 150px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .img-reduced{
+          max-width: 500px;
+          max-height: 400px;
+        }
+        .mission-card:hover {
+            background: #415a77;
+            transform: translateY(-5px);
+        }
+
+        .mission-card a {
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+        .mission-card a p {
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        /* Mission Details Box */
+        .details-box {
+            display: none;
+            background: #2c2c2c;
+            color: #e0e0e0;
+            border: 1px solid #44556a;
+            box-shadow: 0 5px 15px rgb(209, 238, 247);
+            padding: 30px;
+            margin-top: 30px;
+            border-radius: 10px;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+        .details-box h2 {
+             text-align: center;
+             margin-bottom: 20px;
+             color: #f0f0f0;
+             font-size: 1.8rem;
+        }
+        .details-box img {
+             border-radius: 8px;
+             margin-top: 15px;
+             margin-bottom: 20px;
+        }
+        .details-box p {
+            margin-bottom: 15px;
+        }
+        .close-btn {
+            display: inline-block;
+            background: #415a77;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+        .details-box > a.close-btn {
+             display: block;
+             width: fit-content;
+             margin-left: auto;
+             margin-right: auto;
+        }
+        .close-btn:hover {
+            background: #5a7694;
+        }
+        .details-box:target {
+            display: block;
+             scroll-margin-top: 20px;
+        }
+
+        /* ================== Responsive Styles ================== */
+
+        /* Medium Screens / Tablets */
+        @media (max-width: 992px) {
+            .container { max-width: 95%; }
+            .mission-card {
+                 width: calc(33.333% - 20px);
+                 min-width: 220px;
+            }
+            /* Navbar Adjustments */
+            .logo-link img { height: 55px; }
+            /* Title Adjustments */
+            .page-title-container h1 { font-size: 2.2rem; }
+            .page-title-container p { font-size: 1rem; }
+            /* Details Box Adjustments */
+            .details-box { padding: 25px; font-size: 1rem; }
+            .details-box h2 { font-size: 1.6rem; }
+            .details-box img { max-width: 500px; }
+        }
+
+        /* Small Screens / Mobiles */
+        @media (max-width: 768px) {
+            /* Removed body padding adjustment */
+
+             .nav-container {
+                 justify-content: space-between;
+                 position: relative;
+                 /* padding-bottom: 10px; /* Already removed */
+             }
+             .logo-link {
+                 order: 2;
+                 margin: 0;
+             }
+             .logo-link img { height: 50px; }
+             .menu-icon {
+                display: block;
+                order: 1;
+             }
+            nav {
+                order: 3;
+                width: 100%;
+                margin-top: 0.5rem;
+                position: relative;
+                background-color: #111827;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                gap: 0;
+            }
+            #menu-toggle:checked ~ nav ul {
+                display: flex;
+            }
+            nav a {
+                font-size: 18px;
+                display: block;
+                width: 100%;
+                text-align: left;
+                padding: 0.8rem 1rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                color: #ccd6f6;
+                position: static;
+            }
+             nav a:hover {
+                color: #8ae4fa;
+                background-color: rgba(255, 255, 255, 0.08);
+             }
+            nav ul li {
+                 width: 100%;
+                 padding-left: 1rem;
+            }
+            nav ul li::before {
+                 display: flex;
+            }
+            nav ul li:last-child a {
+                border-bottom: none;
+            }
+             nav a::after {
+                  display: flex;
+             }
+
+            /* Title Container Adjustments */
+            .page-title-container { padding: 20px 10px; margin-bottom: 20px; }
+            .page-title-container h1 { font-size: 1.8rem; }
+            .page-title-container p { font-size: 0.9rem; }
+
+            /* Other Mobile Adjustments */
+            .missions { gap: 15px; }
+            .mission-card { width: 90%; min-width: unset; }
+            .details-box { padding: 20px 15px; font-size: 0.95rem; text-align: justify; color: #d0d0d0; }
+            .details-box h2 { font-size: 1.4rem; text-align: center; }
+            .details-box img { max-width: 100%; }
+            .close-btn { padding: 10px 20px; }
+        }
+
+         /* Very narrow screens */
+         @media (max-width: 480px) {
+             /* Title */
+             .page-title-container h1 { font-size: 1.6rem; }
+             /* Card */
+             .mission-card { width: 95%; }
+             /* Navbar */
+             .logo-link img { height: 40px; }
+             .menu-icon { font-size: 1.8rem; }
+             nav a { padding: 0.7rem 1rem; }
+         }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header (Now only contains Navigation) -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="logo.jpg" alt="Galaxy Explorer Logo">
+            </a>
+            <input type="checkbox" id="menu-toggle" />
+            <label for="menu-toggle" class="menu-icon">☰</label>
+            <nav>
+                 <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="planets.html">Planets</a></li>
+                    <li><a href="Galaxy.html">Galaxies</a></li>
+                    <li><a href="Spacemission.html">Space Missions</a></li>
+                    <li><a href="contactus.html">Contact us</a></li>
+                 </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Title (Moved outside header) -->
+    <div class="page-title-container">
+        <h1>Indian Space Missions</h1>
+        <p>Exploring the journey of India into the cosmos</p>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="container">
+        <div class="missions">
+             <div class="mission-card"><a href="#chandrayaan1"><p>Chandrayaan-1 (2008)</p></a></div>
+            <div class="mission-card"><a href="#chandrayaan2"><p>Chandrayaan-2 (2019)</p></a></div>
+            <div class="mission-card"><a href="#chandrayaan3"> <p>Chandrayaan-3 (2023)</p></a></div>
+            <div class="mission-card"><a href="#mangalyaan"> <p>Mangalyaan (2013)</p></a></div>
+            <div class="mission-card"><a href="#gaganyaan"> <p>Gaganyaan</p></a></div>
+            <div class="mission-card"><a href="#aditya"> <p>Aditya-L1 (2023)</p></a></div>
+            <div class="mission-card"><a href="#arybhata"><p>Aryabhata (1975)</p></a></div>
+            <div class="mission-card"><a href="#insat"><p>INSAT (Since 1983)</p></a></div>
+            <div class="mission-card"><a href="#pslv"> <p>PSLV</p></a></div>
+            <div class="mission-card"><a href="#gslv"> <p>GSLV / LVM3</p></a></div>
+        </div>
+
+        <!-- Mission Details Sections -->
+        <div id="chandrayaan1" class="details-box">
+            <h2>Chandrayaan-1 (2008)</h2>
+            <img src="https://chandrayaan.com/images/chandrayaan/320px-PSLV-C11_launch2.jpg" alt="PSLV launching Chandrayaan-1">
+            <p>Chandrayaan-1, India's first mission to the Moon, was launched by the Polar Satellite Launch Vehicle (PSLV-C11) on October 22, 2008. The mission consisted of a lunar orbiter and an impactor.</p>
+            <p>Its most significant achievement was the definitive discovery of water molecules (H₂O) and hydroxyl radicals (OH) on the lunar surface, particularly concentrated at the poles. This finding fundamentally changed our understanding of the Moon. The mission concluded prematurely in August 2009 but completed most of its objectives.</p>
+            <a href="#" class="close-btn">Close</a>
+        </div>
+
+        <div id="chandrayaan2" class="details-box">
+            <h2>Chandrayaan-2 (2019)</h2>
+            <img src="https://static.toiimg.com/thumb/msid-70214219,width-1280,height-720,resizemode-4/70214219.jpg" alt="Chandrayaan-2 Orbiter and Lander depiction" class="img-reduced">
+            <p>Chandrayaan-2, launched on July 22, 2019, by the GSLV MkIII-M1 rocket, was India's second lunar exploration mission. It aimed to explore the unexplored lunar South Pole region with an orbiter, a lander named Vikram, and a rover named Pragyan.</p>
+            <p>While the orbiter was successfully placed in lunar orbit and continues to provide valuable scientific data about the Moon's surface, topography, and exosphere, the Vikram lander unfortunately experienced a hard landing due to a software glitch during its final descent phase. Despite the landing setback, the orbiter part of the mission is a success.</p>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdMaU3Pd_bICcTrP5CoqoGGQrnfUFhk1FFtA&s" alt="Chandrayaan-2 components illustration">
+            <a href="#" class="close-btn">Close</a>
+        </div>
+
+        <div id="chandrayaan3" class="details-box">
+            <h2>Chandrayaan-3 (2023)</h2>
+            <img src="https://images.deccanherald.com/deccanherald%2F2023-08%2F113e4b2c-94a2-495e-ac80-100fd9d581c5%2FChandrayaan_3_components.jpg?rect=1151%2C0%2C1634%2C2179" alt="Chandrayaan-3 Lander and Rover illustration" class="img-reduced">
+            <p>Chandrayaan-3, launched on July 14, 2023, by the LVM3-M4 rocket, is India's third lunar mission and a follow-up to Chandrayaan-2. Its primary objective was to demonstrate a successful soft landing on the lunar surface and conduct in-situ experiments.</p>
+            <p>On August 23, 2023, the Vikram lander successfully touched down near the lunar South Pole, making India the fourth country to achieve a lunar landing and the first to land near the South Pole. The Pragyan rover was deployed and conducted experiments for about one lunar day (14 Earth days), confirming the presence of sulfur and other elements. The mission successfully met all its objectives.</p>
+            <img src="https://etimg.etb2bimg.com/photo/102940055.cms" alt="Pragyan Rover on the Moon" class="img-reduced">
+            <a href="#" class="close-btn">Close</a>
+        </div>
+
+        <div id="mangalyaan" class="details-box">
+            <h2>Mangalyaan (MOM) (2013)</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Mars_Orbiter_Mission_Over_Mars_%2815237158879%29.jpg" alt="Mangalyaan Orbiter over Mars artist's impression" class="img-reduced">
+            <p>The Mars Orbiter Mission (MOM), informally known as Mangalyaan, was India's first interplanetary mission. Launched on November 5, 2013, aboard a PSLV-C25 rocket, it aimed primarily to demonstrate the technology required for interplanetary travel and exploration.</p>
+            <p>ISRO achieved remarkable success by reaching Mars orbit on September 24, 2014, making India the first nation to do so on its maiden attempt and the fourth space agency globally. Renowned for its extreme cost-effectiveness (approx. $74 million), the orbiter significantly outlived its planned mission duration of six months, studying the Martian surface features, morphology, mineralogy, and atmosphere until communication was lost in April 2022.</p>
+            <img src="https://defencedirecteducation.com/wp-content/uploads/2022/11/Mars_Orbiter_Mission_Spacecraft-1024x598.jpg" alt="Mangalyaan Spacecraft model" class="img-reduced">
+            <a href="#" class="close-btn">Close</a>
+        </div>
+
+        <div id="gaganyaan" class="details-box">
+            <h2>Gaganyaan (Upcoming)</h2>
+            <img src="https://c.ndtvimg.com/2023-10/gctr0jb8_gaganyaan-isro_625x300_07_October_23.jpg?downsize=545:307" alt="Gaganyaan crew module test vehicle TV-D1">
+            <p>Gaganyaan ("Sky Craft") is ISRO's ambitious programme to demonstrate human spaceflight capability. The objective is to launch a crew of 3 astronauts into a Low Earth Orbit (LEO) of 400 km for a mission duration of up to 7 days and bring them back safely to Earth.</p>
+            <p>The programme involves developing critical technologies, including a human-rated launch vehicle (HLVM3 - a modified LVM3), a habitable crew module, life support systems, and crew escape systems. Several uncrewed test flights, including Pad Abort Tests and Orbital Vehicle tests, are planned before the first crewed mission, currently anticipated around 2025 or later. Successful completion will make India the fourth nation to independently send humans into space.</p>
+            <img src="https://vajiram-prod.s3.ap-south-1.amazonaws.com/gaganyaan_orbital_module_5f76fcad56.png" alt="Gaganyaan Orbital Module diagram" class="img-reduced">
+            <a href="#" class="close-btn">Close</a>
+        </div>
+
+        <div id="aditya" class="details-box">
+            <h2>Aditya-L1 (2023)</h2>
+            <img src="https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2024/01/deployment-of-magnetometer-boom-on-aditya-l1-1706187652.jpg" alt="Aditya-L1 spacecraft with magnetometer boom deployed" class="img-reduced">
+            <p>Aditya-L1, launched on September 2, 2023, by PSLV-C57, is India's first dedicated space mission for observing the Sun. It is strategically placed in a halo orbit around the Lagrange point 1 (L1) of the Sun-Earth system, about 1.5 million kilometers from Earth.</p>
+            <p>This vantage point allows Aditya-L1 to continuously view the Sun without any occultation or eclipses. Equipped with seven payloads, the mission studies the Sun's outermost layers (corona), the chromosphere, photosphere, solar emissions, solar winds, flares, and Coronal Mass Ejections (CMEs), providing crucial data for understanding solar dynamics and space weather.</p>
+            <img src="https://images.news18.com/ibnlive/uploads/2023/09/aditya-l1-all-you-need-to-know.jpg" alt="Aditya-L1 mission overview infographic" class="img-reduced">
+            <a href="#" class="close-btn">Close</a>
+        </div>
+
+        <div id="arybhata" class="details-box">
+            <h2>Aryabhata (1975)</h2>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAQNeIhuCLs-_ymlJpEis_95jVfWiSD3Zwlg&s" alt="Aryabhata Satellite model" class="img-reduced">
+            <p>Aryabhata, named after the renowned ancient Indian astronomer and mathematician, holds the distinction of being India's very first satellite. It was designed and fabricated entirely in India by the Indian Space Research Organisation (ISRO).</p>
+            <p>Launched on April 19, 1975, from Kapustin Yar, Russia, aboard a Soviet Kosmos-3M rocket, the satellite carried scientific instruments for experiments in X-ray astronomy, aeronomy (study of the upper atmosphere), and solar physics. Although a power failure halted experiments after just four days in orbit, the launch itself was a landmark achievement, demonstrating India's indigenous capability in satellite technology and marking its entry into the space age.</p>
+            <a href="#" class="close-btn">Close</a>
+        </div>
+
+        <div id="insat" class="details-box">
+            <h2>INSAT Series (Since 1983)</h2>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLgFQhTmKz-uy62QQwOSnY8FjTXbUQINwLZg&s" alt="An INSAT satellite in orbit - artist's impression" class="img-reduced">
+            <p>The Indian National Satellite System (INSAT) is a series of multipurpose geostationary satellites launched by ISRO to satisfy India's telecommunications, broadcasting, meteorology, and search-and-rescue needs. Commissioned in 1983 with the launch of INSAT-1B, INSAT is one of the largest domestic communication satellite systems in the Asia-Pacific region.</p>
+            <p>Over the decades, numerous satellites across several generations (INSAT-1, INSAT-2, INSAT-3, INSAT-4, and the subsequent GSAT series which continues the legacy) have been launched. These satellites provide vital services like Direct-To-Home (DTH) television, digital satellite news gathering, weather forecasting (including cyclone tracking via meteorological payloads), disaster warning, and tele-education, significantly impacting everyday life in India.</p>
+            <img src="https://sky-brokers.com/wp-content/uploads/2024/07/INSAT-3DS-in-orbit.jpeg" alt="INSAT-3DS Satellite in orbit" class="img-reduced">
+            <a href="#" class="close-btn">Close</a>
+        </div>
+
+        <div id="pslv" class="details-box">
+            <h2>PSLV (Polar Satellite Launch Vehicle)</h2>
+            <img src="https://www.awazthevoice.in/upload/news/1690184575fullyintegratedpslv-c31withirnss-1ebeingmovedtosecondlaunchpadslp-11.jpg.webp" alt="PSLV rocket on the launchpad" class="img-reduced">
+            <p>The Polar Satellite Launch Vehicle (PSLV) is ISRO's third-generation launch vehicle, often hailed as the "workhorse" of India's space program due to its reliability and versatility. It was the first Indian launch vehicle equipped with liquid stages.</p>
+            <p>Since its first successful launch in 1994 (following a failure on its debut flight in 1993), PSLV has launched numerous Indian and foreign satellites into a variety of orbits, including Low Earth Orbit (LEO), Sun-Synchronous Polar Orbit (SSPO), Geosynchronous Transfer Orbit (GTO), and even interplanetary trajectories (like Chandrayaan-1 and Mangalyaan). It has several variants (PSLV-G, PSLV-CA, PSLV-DL, PSLV-XL, PSLV-QL) differing in the number and type of strap-on boosters used, allowing it to cater to different mission requirements.</p>
+            <a href="#" class="close-btn">Close</a>
+        </div>
+
+        <div id="gslv" class="details-box">
+            <h2>GSLV / LVM3 Launch Vehicles</h2>
+            <img src="https://www.isro.gov.in/media_isro/image/media/Missions/GSLV-MK/GSAT19/more/gallery/resized/gslvmk-iii06_large.jpg.webp" alt="LVM3 (GSLV MkIII) rocket lifting off" class="img-reduced">
+            <p>ISRO operates two main classes of Geosynchronous Satellite Launch Vehicles primarily designed to launch heavier satellites into Geosynchronous Transfer Orbit (GTO) and Geostationary Orbit (GEO).</p>
+            <p><b>GSLV MkII:</b> This three-stage vehicle uses a cryogenic upper stage (CUS) developed indigenously by India. It typically launches satellites weighing around 2.5 tonnes to GTO. It has been crucial for launching INSAT/GSAT communication satellites.</p>
+            <p><b>LVM3 (Launch Vehicle Mark 3 - formerly GSLV MkIII):</b> This is a significantly more powerful, three-stage heavy-lift launch vehicle. It uses two solid strap-on boosters (S200), a liquid core stage (L110), and a high-thrust cryogenic upper stage (C25). LVM3 can launch satellites up to 4 tonnes to GTO and about 8 tonnes to LEO. It launched Chandrayaan-2, Chandrayaan-3, and is human-rated for the Gaganyaan mission (HLVM3 variant).</p>
+            <a href="#" class="close-btn">Close</a>
+        </div>
+
+    </div> <!-- End container -->
+
+</body>
+</html>

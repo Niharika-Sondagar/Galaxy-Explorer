@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planets - Galaxy Explorer (Dark)</title> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+    <style>
+        /* General Styles - Dark Theme */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #050505; /* Dark background */
+            color: #e0e0e0; /* Light default text color */
+        }
+
+        /* Header with Background Image */
+        header {
+            /* --- Background Image Settings --- */
+            background-image: url("homepage.jpg"); /* <-- MAKE SURE THIS PATH IS CORRECT */
+            background-repeat: no-repeat;
+            background-size: cover; /* Use cover for better responsiveness */
+            background-position: center center;
+            /* --- Layout & Text --- */
+            color: white; /* Keep white text for header */
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8); /* Slightly stronger shadow */
+            min-height: 350px; /* Adjusted height */
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-sizing: border-box;
+            margin-top: 0;
+             /* Optional: Add a dark overlay for better text contrast */
+             /* position: relative; */
+        }
+         
+        /* Navigation Bar Container */
+        .nav-outer-container {
+            background-color: rgb(6,6,43); /* Dark Blue/Gray for nav bar */
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #353967;
+            width: 100%;
+          
+            box-sizing: border-box;
+            position: sticky; /* Make nav sticky */
+            top: 0;           /* Stick to top */
+            z-index: 1000;     /* Ensure it's on top */
+        }
+
+        /* Hero Content (Title inside Header) */
+        .hero-content {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            position: relative; /* Ensure text is above potential overlay */
+            z-index: 2;         /* Ensure text is above potential overlay */
+        }
+        .hero-content h1 {
+            font-size: 3em;
+            margin: 0;
+            max-width: 90%;
+            color: white;
+        }
+
+        /* Main Content Container */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px; /* Increased gap slightly */
+            padding: 30px 20px; /* Increased padding */
+            text-align: center;
+        }
+
+        /* --- Navigation Structure --- */
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Logo left, Nav right by default */
+            flex-wrap: wrap;
+            padding: 0 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- LOGO Styling --- */
+        .logo-link {
+            order: 0; /* Default order */
+            flex-shrink: 0; /* Prevent shrinking */
+            margin-right: 1rem; /* Space next to logo on large screens */
+        }
+        .logo-link img {
+            display: block;
+            height: 50px; /* Adjust logo height */
+            width: auto;
+        }
+        /* --- End LOGO Styling --- */
+
+
+        /* Hide checkbox */
+        #menu-toggle {
+            display: none;
+        }
+
+        /* Hamburger Menu Icon */
+        .menu-icon {
+            display: none; /* Hidden by default */
+            font-size: 2rem;
+            cursor: pointer;
+            color: #8ae4fa; /* Accent color */
+            padding: 0.5rem 0;
+            order: 1; /* Default order (after logo) */
+        }
+
+        /* Navigation Links Block */
+        nav {
+           order: 2; /* Default order (after logo and icon) */
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem 1.5rem;
+        }
+
+        nav a {
+            color: #d5d6d7; /* Light color for links */
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 20px;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: rgb(254, 254, 252); /* Accent color on hover */
+        }
+
+        /* Underline effect */
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #b2d9f8;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Nav List Item Bullets */
+        ul li { /* Applied only within nav now */
+            position: relative;
+             /* Removed padding-left here, handled by gap in ul */
+             /* margin-bottom: 0.8rem; Removed, gap handles spacing */
+             color: #f6f7f9; /* Keep light color */
+             list-style: none; /* Ensure default bullets are off */
+             padding-left: 1.8rem; /* Re-add padding for bullet space */
+        }
+
+        ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            top: 50%; /* Center vertically */
+            transform: translateY(-50%); /* Adjust vertical alignment */
+            color: #acd8fc;
+            font-size: 2.4em;
+            line-height: 1; /* Prevent extra line height */
+        }
+
+        /* Planet Link Styling - Dark Theme */
+        .planet-link {
+            text-decoration: none;
+            color: white; /* Light text */
+            display: block;
+            background: #1f2937; /* Dark Blue/Gray background */
+            border-radius: 10px;
+            padding: 25px; /* Increased padding */
+            width: 90%;
+            max-width: 380px; /* Slightly reduced max-width */
+            box-shadow: 0 0 10px rgb(133, 236, 254); /* Subtle glow effect with accent color */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added shadow transition */
+            cursor: pointer;
+            box-sizing: border-box;
+            border: 1px solid #303C55; /* Subtle border */
+        }
+
+        .planet-link h2 {
+            text-decoration: underline;
+            text-decoration-color: #64ffda; /* Accent underline */
+            text-decoration-thickness: 2px; /* Slightly thicker underline */
+            margin-top: 0;
+            margin-bottom: 0.8rem; /* Add space below heading */
+            color: #ffffff; /* Ensure heading is white */
+        }
+
+        .planet-link p {
+             line-height: 1.5; /* Improve paragraph readability */
+        }
+
+        .planet-link:hover {
+            transform: translateY(-5px); /* Lift effect instead of scale */
+            box-shadow: 0 8px 25px rgba(100, 255, 218, 0.2); /* Stronger glow on hover */
+        }
+
+        /* Footer Styling - Dark Theme */
+        footer {
+            background-color: #01031a; /* Match nav bar color */
+            color: white; /* Lighter gray for footer text */
+            text-align: center;
+            padding: 25px 0; /* Increased padding */
+            font-size: 0.9em;
+            border-top: 1px solid #303C55; /* Match nav border */
+            margin-top: 30px; /* Add space above footer */
+        }
+
+        footer a {
+            color: #64ffda; /* Use accent color for footer links */
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Media Queries --- */
+        @media (max-width: 768px) {
+            header {
+                min-height: 250px; /* Adjust header height */
+            }
+             .hero-content h1 {
+                font-size: 2.2em; /* Smaller title */
+            }
+
+            /* --- Mobile Navigation: Logo Right --- */
+            
+
+            .logo-link {
+                order: 2; /* MOVE LOGO TO THE RIGHT */
+                margin-right: 0; /* Remove right margin */
+                margin-left: 0.5rem; /* Optional: add space on its left */
+            }
+            .logo-link img {
+                height: 45px; /* Slightly smaller logo */
+            }
+
+            .menu-icon {
+                display: block; /* SHOW THE ICON */
+                order: 1;      /* Keep icon on the left */
+            }
+
+            /* Style the Nav Menu for Vertical Layout */
+            nav {
+                order: 3;         /* Nav comes last in the top row */
+                width: 100%;
+                margin-top: 0.5rem;
+                 background-color: rgb(10, 10, 55); /* Slightly different background for dropdown */
+                 border-radius: 0 0 5px 5px; /* Optional rounded corners */
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                gap: 0;
+            }
+
+            /* Show the Nav Menu when checkbox is checked */
+            /* IMPORTANT: Adjusted selector to account for logo being between label and nav now */
+            #menu-toggle:checked + label + .logo-link + nav ul, /* If logo is directly after label */
+            #menu-toggle:checked + label ~ nav ul /* More general sibling selector (safer) */
+             {
+                display: flex;
+            }
+
+
+            /* Style mobile nav links */
+            nav a {
+                font-size: 18px;
+                display: block;
+                width: 100%;
+                text-align: left;
+                padding: 0.8rem 1.2rem; /* Adjusted padding */
+                 border-bottom: 1px solid #303C55; /* Separator lines */
+            }
+            nav ul li {
+                width: 100%; /* List items take full width */
+                padding-left: 1.2rem; /* Align text with padding */
+                 margin-bottom: 0; /* Remove bottom margin */
+            }
+             nav ul li:last-child a {
+                 border-bottom: none; /* No border on last item */
+             }
+             nav ul li::before {
+                 display: flex; 
+             }
+
+             /* Hide desktop underline effect on mobile */
+             nav a::after {
+                  display:none;
+             }
+             /* --- End Mobile Navigation --- */
+
+             .container {
+                 padding: 20px 15px;
+                 gap: 20px;
+             }
+             .planet-link {
+                 padding: 20px;
+                 max-width: 450px; /* Allow slightly wider cards on tablet */
+             }
+        }
+
+         @media (max-width: 480px) {
+             header {
+                min-height: 200px;
+             }
+             .hero-content h1 {
+                font-size: 1.8em; /* Even smaller title */
+            }
+            .logo-link img {
+                height: 40px; /* Smaller logo */
+            }
+            .planet-link h2 {
+                 font-size: 1.2em;
+            }
+             .planet-link p {
+                 font-size: 0.9em;
+            }
+            .menu-icon {
+                font-size: 1.8rem;
+             }
+            nav a {
+                padding: 0.7rem 1rem;
+            }
+             nav ul li {
+                 padding-left: 1rem;
+             }
+             .container {
+                 padding: 15px 10px;
+                 gap: 15px;
+             }
+              .planet-link {
+                 padding: 15px;
+             }
+         }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="nav-outer-container">
+        <div class="nav-container">
+           
+            <a href="index.html" class="logo-link">
+                <img src="logo.jpg" alt="Galaxy Explorer Logo"> 
+            </a>
+
+            
+            <input type="checkbox" id="menu-toggle" />
+            <label for="menu-toggle" class="menu-icon">☰</label>
+
+           
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="planets.html">Planets</a></li>
+                    <li><a href="Galaxy.html">Galaxies</a></li>
+                    <li><a href="Spacemission.html">Space Missions</a></li>
+                    <li><a href="contactus.html">Contact us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="hero-content">
+            <h1>Explore the Planets</h1>
+        </div>
+    </header>
+
+    <!-- Main Content: Planet Links -->
+    <div class="container">
+        <a href="Mercury.html" class="planet-link">
+            <h2>Mercury</h2>
+            <p>Smallest planet, closest to the Sun, and has the most extreme temperature variations.</p>
+        </a>
+        <a href="venus.html" class="planet-link">
+            <h2>Venus</h2>
+            <p>Thick atmosphere causes a runaway greenhouse effect, making it the hottest planet.</p>
+        </a>
+        <a href="earth.html" class="planet-link">
+            <h2>Earth</h2>
+            <p>The only planet known to support life with diverse ecosystems and water coverage.</p>
+        </a>
+        <a href="mars.html" class="planet-link">
+            <h2>Mars</h2>
+            <p>Known as the Red Planet due to iron oxide, and has the tallest volcano, Olympus Mons.</p>
+        </a>
+        <a href="jupiter.html" class="planet-link">
+            <h2>Jupiter</h2>
+            <p>The largest planet with a massive storm called the Great Red Spot.</p>
+        </a>
+        <a href="saturn.html" class="planet-link">
+            <h2>Saturn</h2>
+            <p>Famous for its beautiful ring system made of ice and rock.</p>
+        </a>
+        <a href="uranus.html" class="planet-link">
+            <h2>Uranus</h2>
+            <p>Rotates on its side and has extreme seasonal changes.</p>
+        </a>
+        <a href="neptune.html" class="planet-link">
+            <h2>Neptune</h2>
+            <p>The farthest planet, known for its strong winds and deep blue color.</p>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Galaxy Explorer. All rights reserved.</p>
+        
+    </footer>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saturn</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #101010;
+            color: #fff;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        header {
+            position: relative;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(81, 91, 2, 0.4);
+            overflow: hidden;
+            text-shadow: 2px 2px 4px black;
+            height: 400px;
+            padding: 0;
+            background-image: url('saturn.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 0.5em;
+            color: white;
+            position: relative;
+            z-index: 1;
+            padding: 1rem;
+        }
+
+        header p {
+            font-size: 1.5em;
+            color: white;
+            position: relative;
+            z-index: 1;
+            padding: 1rem;
+        }
+
+        /* Main Content Styles */
+        main {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #323738;
+            box-shadow: 0 0 20px #fbc531;
+            border-radius: 12px;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 2rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        /* Overview Section with Image/Text */
+        .overview-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-gap: 2rem;
+            align-items: start;
+        }
+
+        .overview-container video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px #fbc531;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .overview-container video:hover {
+            transform: scale(1.03);
+        }
+
+        /* Style for the two initial paragraphs */
+        .overview-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Put more than 2 paragraph after picture */
+        .afterimage {
+            grid-column: 1 / -1;
+        }
+
+        section h2 {
+            font-size: 2.5em;
+            color: #fbc531;
+            margin-bottom: 0.75em;
+            padding-bottom: 0.5em;
+            border-bottom: 2px solid #fbc531;
+        }
+
+        p {
+            margin-bottom: 1.2em;
+            color: #dfe6e9;
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 1.5em;
+            color: #dfe6e9;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        .saturn-fact {
+            background-color: #060606;
+            padding: 1.5rem;
+            border-left: 5px solid #e1b12c;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .saturn-fact p {
+            font-style: italic;
+            color: #fefefe;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #2d3436;
+            color: #fff;
+            text-align: center;
+            padding: 1.0rem 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            header {
+                height: 300px;
+            }
+
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            main {
+                max-width: 100%;
+                margin: 1rem auto;
+                padding: 1rem;
+                grid-template-columns: 1fr;
+            }
+
+            .overview-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                align-items: center;
+            }
+
+            .overview-container video {
+                margin: 0 auto 1rem;
+            }
+
+            .afterimage {
+                grid-column: 1 / -1;
+                text-align: left;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+            }
+            p {
+                font-size: 0.9em;
+            }
+
+            ul, ol {
+                font-size: 0.9em;
+            }
+            li {
+                margin-bottom: 0.3em;
+            }
+        }
+
+        /* For very small screens */
+        @media (max-width: 480px) {
+            header {
+                height: 200px;
+            }
+            header h1 {
+                font-size: 1.8em;
+                padding: 0.3rem;
+            }
+
+            header p {
+                font-size: 0.9em;
+                padding: 0.3rem;
+            }
+            .saturn-fact {
+                padding: 1rem;
+                font-size:0.8em;
+            }
+            p {
+                font-size: 0.8em;
+            }
+
+            ul, ol {
+                font-size: 0.8em;
+            }
+            section h2 {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+
+        <h1>Saturn: The Ringed planet</h1>
+        <p>A Jewel of the Solar System</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Overview</h2>
+            <div class="overview-container">
+                <video autoplay loop muted>
+                    <source src="saturn.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="overview-text">
+                    <p>Saturn, the sixth planet from the Sun, is renowned for its spectacular ring system, making it one of the most visually stunning objects in our solar system. This gas giant is composed primarily of hydrogen and helium and is known for its low density, even less dense than water.</p>
+                    <p>Saturn is a dynamic and complex world with a banded atmosphere, similar to Jupiter, but with a more subdued appearance. Its ring system is made up of countless particles of ice and rock, ranging in size from tiny grains to large chunks.</p>
+
+                </div>
+            </div>
+            <h3 class="afterimage">A Celestial Masterpiece: The Rings of Saturn</h3>
+            <p class="afterimage">Saturn's rings are its most defining feature, an awe-inspiring display of icy particles that stretches hundreds of thousands of kilometers into space. Composed primarily of water ice, with traces of rocky material, the rings are incredibly thin, often only a few meters thick, despite their vast expanse. These rings are not solid structures but rather a collection of countless individual particles, ranging in size from tiny grains to large boulders, each following its own orbit around Saturn. Gaps and divisions within the rings, sculpted by the gravitational influence of shepherd moons, add to the system's intricate beauty.</p>
+
+            <h3 class = "afterimage">A World of Atmosphere and Interior Mysteries</h3>
+            <p class ="afterimage">Beneath the splendor of its rings, Saturn is a gas giant, composed primarily of hydrogen and helium. Its atmosphere, while exhibiting cloud bands similar to Jupiter, is less colorful and more subdued. Strong winds, some reaching speeds of up to 1,800 kilometers per hour, whip around the planet, creating massive storms that can persist for extended periods. The interior of Saturn is thought to consist of layers of molecular hydrogen, metallic hydrogen, and a small, rocky core, but the exact composition and structure remain subjects of ongoing research.</p>
+
+            <h3 class = "afterimage">A Family of Moons: Potential for Life Beyond Earth</h3>
+            <p class ="afterimage">Saturn is orbited by a diverse collection of moons, each with its own unique characteristics. Titan, the largest moon, boasts a dense atmosphere and liquid methane lakes, resembling a primordial Earth. Enceladus, a small, icy moon, is famous for its geysers, which spew water ice and organic molecules into space, hinting at a subsurface ocean that could potentially harbor life. The other moons of Saturn, from heavily cratered Mimas to two-toned Iapetus, each contribute to the richness and complexity of the Saturnian system.</p>
+           
+            <h3 class="afterimage">The Rings of Saturn</h3>
+            <p class="afterimage">Saturn's rings are its most defining feature. They are composed of countless particles of ice and rock, ranging in size from millimeters to several meters across. The rings are divided into several main rings, labeled alphabetically in the order they were discovered.</p>
+        </section>
+
+        <section>
+            <h2>Key Characteristics</h2>
+            <ul>
+                <li><b>Orbital Period:</b> 10,759 Earth days (29.45 Earth years)</li>
+                <li><b>Diameter:</b> 116,460 km (about 9.5 times the size of Earth)</li>
+                <li><b>Mass:</b> 5.683 × 10^26 kg (about 95 times the mass of Earth)</li>
+                <li><b>Surface Gravity:</b> 1.065 g (Slightly more than Earth's) - *Note: Gas giants don't have a true surface.*</li>
+                <li><b>Cloud Top Temperature:</b> Average -178°C (-288°F)</li>
+                <li><b>Atmosphere:</b> Primarily hydrogen and helium</li>
+                <li><b>Moons:</b> 274</li>
+
+            </ul>
+        </section>
+
+        <section>
+            <h2>Interesting Facts</h2>
+            <div class="saturn-fact">
+                <p>"Saturn is the least dense planet in the Solar System; it is less dense than water."</p>
+            </div>
+            <div class="saturn-fact">
+                <p>"Saturn's rings are made mostly of chunks of ice and small amounts of carbonaceous dust."</p>
+            </div>
+            <div class="saturn-fact">
+                <p>"Saturn has the second-shortest day in the solar system."</p>
+            </div>
+        </section>
+        <section>
+            <h2>Exploration of Saturn</h2>
+            <p>Saturn has been visited by several robotic spacecraft, providing invaluable data about the planet, its rings, and its moons.</p>
+
+            <h3>Pioneer and Voyager Missions</h3>
+            <p>The Pioneer 11 and Voyager 1 and 2 missions provided the first close-up views of Saturn and its rings in the 1970s and 1980s.</p>
+
+            <h3>Cassini-Huygens Mission</h3>
+            <p>The Cassini-Huygens mission, which orbited Saturn from 2004 to 2017, was the most comprehensive exploration of Saturn to date. The Huygens probe landed on Titan, providing the first surface images of this unique moon.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Saturn Information. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
