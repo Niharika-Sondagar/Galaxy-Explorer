@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Galaxy Explorer</title>
     <style>
-        /* --- Basic Reset & Defaults --- */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -15,16 +14,16 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.7;
-            background-color: #101010; /* Even darker space blue/black */
-            color: #e8eaed; /* Google-style light grey text */
-            padding-bottom: 4rem; /* Ensure footer doesn't overlap content */
-            min-height: 100vh; /* Ensure footer is at least at the bottom */
-            display: flex; /* Use flexbox for footer positioning */
-            flex-direction: column; /* Stack elements vertically */
+            background-color: #101010; 
+            color: #e8eaed; 
+            padding-bottom: 4rem; 
+            min-height: 100vh; 
+            display: flex;
+            flex-direction: column; 
         }
 
         a {
-            color: #8ab4f8; /* Google blue for links */
+            color: #8ab4f8; 
             text-decoration: none;
         }
 
@@ -32,15 +31,13 @@
             text-decoration: underline;
             color: #aecbfa;
         }
-
-        /* --- Header --- */
         .page-header {
-            background-color: #1b263b; /* Dark grey-blue */
+            background-color: #1b263b;
             color: #fff;
             padding: 2.5rem 1.5rem;
             text-align: center;
             margin-bottom: 2rem;
-            border-bottom: 3px solid #94a2b5; /* Medium grey-blue border */
+            border-bottom: 3px solid #94a2b5; 
         }
 
         .page-header h1 {
@@ -52,64 +49,53 @@
 
         .page-header p {
             font-size: 1.1rem;
-            color: #d1d5db; /* Lighter grey */
+            color: #d1d5db;
         }
-
-        /* --- Main Content Area --- */
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 0 1rem;
-            flex-grow: 1; /* Allows main content to push footer down */
+            flex-grow: 1;
         }
-
-        /* --- Contact Info Styling --- */
         .contact-details {
              background-color: #1b263b;
              border: 1px solid #4b5563;
              border-radius: 10px;
-             padding: 2rem 2.5rem; /* Increased padding */
+             padding: 2rem 2.5rem; 
              box-shadow: 0 5px 20px rgb(173, 226, 247);
-             margin-top: 1rem; /* Added some top margin */
+             margin-top: 1rem;
         }
 
-         .contact-details h2 { /* Changed from h3 for semantic hierarchy */
-            margin-bottom: 1.5rem; /* Increased margin */
+         .contact-details h2 { 
+            margin-bottom: 1.5rem; 
             color: #ffffff;
             font-weight: 500;
             border-bottom: 1px solid #4b5563;
-            padding-bottom: 1rem; /* Increased padding */
-            text-align: center; /* Center heading */
+            padding-bottom: 1rem; 
+            text-align: center; 
          }
-
         .contact-details p {
-            margin-bottom: 1rem; /* Increased spacing */
+            margin-bottom: 1rem; 
             color: #d1d5db;
             line-height: 1.8;
-            font-size: 1.05rem; /* Slightly larger text */
+            font-size: 1.05rem; 
         }
-
          .contact-details strong {
             color: #e8eaed;
-            min-width: 70px; /* Adjust alignment */
+            min-width: 70px; 
             display: inline-block;
-            margin-right: 5px; /* Space after label */
+            margin-right: 5px;
          }
-
-
-        /* --- Footer --- */
         .page-footer {
             text-align: center;
             padding: 1.5rem 1rem;
-            margin-top: 3rem; /* Ensure space above footer */
+            margin-top: 3rem;
             background-color: #1b263b;
             color: white;
             font-size: 0.9rem;
             border-top: 1px solid #4b5563;
-            flex-shrink: 0; /* Prevent footer from shrinking */
+            flex-shrink: 0;
         }
-
-        /* --- Responsive Adjustments --- */
         @media (max-width: 768px) {
             .page-header h1 {
                 font-size: 2.1rem;
@@ -143,8 +129,6 @@
     </header>
 
     <main class="container">
-
-        <!-- Contact Details Section -->
         <div class="contact-details">
              <h2>Contact Information & Resources</h2>
              <p><strong>Email:</strong> <a href="mailto:contact@galaxyexplorer.example.com">contact@galaxyexplorer.example.com</a> (Placeholder)</p>
@@ -152,8 +136,6 @@
              <p><strong>NASA:</strong> <a href="https://www.nasa.gov/" target="_blank" rel="noopener noreferrer">Visit NASA Official Website</a></p>
              <p><strong>ISRO:</strong> <a href="https://www.isro.gov.in/" target="_blank" rel="noopener noreferrer">Visit ISRO Official Website</a></p>
         </div>
-        <!-- End Contact Details Section -->
-
     </main>
 
     <footer class="page-footer">
